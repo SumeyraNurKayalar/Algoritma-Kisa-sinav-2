@@ -1,1 +1,0 @@
-# Algoritma-Kisa-sinav-2
