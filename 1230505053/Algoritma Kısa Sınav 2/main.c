@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*Kodun çalışması için ilk olarak açık arttırmaya katılacak kişi sayısı girilir ve teker teker bu kişilerin 
+ödeyeceği miktarlar girilir.Bu ödeme miktarları ve kişilerin isimleri girildikten sonra program en sonunda örnek olarak 
+girilmiş item cismini en çok ödeme yapan kişiye satar ve bu kişinin ismini ve yaptığı ödeme miktarını verir. Ayriyeten bunun
+altında açık arttırmaya katılmış tüm katılımcıların adı ve ödeme bedelleri yazar.*/
+
 // Creates a struct to represent a bid
 struct Bid {
     char bidderName[100];
