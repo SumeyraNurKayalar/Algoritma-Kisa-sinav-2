@@ -6,22 +6,22 @@
 girilmiş item cismini en çok ödeme yapan kişiye satar ve yapılan ödeme miktarını verir. Ayriyeten bunun
 altında açık arttırmaya katılmış tüm katılımcıların adı ve ödeme bedelleri yazar.*/
 
-// Creates a struct to represent a bid
-struct Bid {
+// Typedef for Bid struct
+typedef struct {
     char bidderName[100];
     double amount;
-};
+} Bid;
 
-// Creates a struct to represent an auction item
-struct AuctionItem {
+// Typedef for AuctionItem struct
+typedef struct {
     char itemName[50];
-    struct Bid *bids;  // creates an array to store the bids
-    int numBids;       // creates a number of the bids
-    double currentBid; // Currents the highest bid
-};
+    Bid *bids;
+    int numBids;
+    double currentBid;
+} AuctionItem;
 
 // Functions to initialize an auction item
-void initializeAuctionItem(struct AuctionItem *item, const char *itemName) {
+void initializeAuctionItem(AuctionItem *item, const char *itemName) {
     snprintf(item->itemName, sizeof(item->itemName), "%s", itemName);
     item->bids = NULL;
     item->numBids = 0;
@@ -29,27 +29,22 @@ void initializeAuctionItem(struct AuctionItem *item, const char *itemName) {
 }
 
 // Functions to place a bid on an auction item
-void placeBid(struct AuctionItem *item, const char *bidderName, double bidAmount) {
-    // Checks if the bid is higher than the current highest bid
+void placeBid(AuctionItem *item, const char *bidderName, double bidAmount) {
     if (bidAmount > item->currentBid) {
-        // Updates the current highest bid
         item->currentBid = bidAmount;
     }
 
-    // Allocates memory for a new bid
-    item->bids = realloc(item->bids, (item->numBids + 1) * sizeof(struct Bid));
+    item->bids = realloc(item->bids, (item->numBids + 1) * sizeof(Bid));
 
-    // Stores the bid information
     snprintf(item->bids[item->numBids].bidderName, sizeof(item->bids[item->numBids].bidderName), "%49s", bidderName);
     item->bids[item->numBids].amount = bidAmount;
 
-    // Increments the number of bids
     item->numBids++;
 
     printf("Bid placed successfully by %s for %.2f\n", bidderName, bidAmount);
 }
 
-// Functions to get the number of bidders from the user
+// Function to get the number of bidders from the user
 int getNumBidders() {
     int numBidders;
     printf("Enter the number of bidders: ");
@@ -57,8 +52,8 @@ int getNumBidders() {
     return numBidders;
 }
 
-// Functions to get bidder information from the user
-void getBidderInfo(struct AuctionItem *item) {
+// Function to get bidder information from the user
+void getBidderInfo(AuctionItem *item) {
     int numBidders = getNumBidders();
     for (int i = 0; i < numBidders; i++) {
         char bidderName[50];
@@ -74,8 +69,8 @@ void getBidderInfo(struct AuctionItem *item) {
     }
 }
 
-// Functions to display all bidders
-void displayAllBidders(const struct AuctionItem *item) {
+// Function to display all bidders
+void displayAllBidders(const AuctionItem *item) {
     printf("All Bidders for item: %s\n", item->itemName);
     printf("Bidders:\n");
     for (int i = 0; i < item->numBids; i++) {
@@ -83,31 +78,33 @@ void displayAllBidders(const struct AuctionItem *item) {
     }
 }
 
-// Functions to display the auction results
-void displayAuctionResults(const struct AuctionItem *item) {
+// Function to display the auction results, including the highest bidder
+void displayAuctionResults(const AuctionItem *item) {
     printf("Auction results for item: %s\n", item->itemName);
     printf("Current highest bid: %.2f\n", item->currentBid);
+
+    if (item->numBids > 0) {
+        printf("Highest Bidder: %s - %.2f\n", item->bids[item->numBids - 1].bidderName, item->bids[item->numBids - 1].amount);
+    } else {
+        printf("No bids placed yet.\n");
+    }
 
     displayAllBidders(item);
 }
 
-// Functions to free memory allocated for bids
-void cleanupAuctionItem(struct AuctionItem *item) {
+// Function to free memory allocated for bids
+void cleanupAuctionItem(AuctionItem *item) {
     free(item->bids);
 }
 
 int main() {
-    // Creates an auction item
-    struct AuctionItem myItem;
+    AuctionItem myItem;
     initializeAuctionItem(&myItem, "Item");
 
-    // Gets bidder information from the user
     getBidderInfo(&myItem);
 
-    // Displays auction results
     displayAuctionResults(&myItem);
 
-    // Cleans up memory
     cleanupAuctionItem(&myItem);
 
     return 0;
