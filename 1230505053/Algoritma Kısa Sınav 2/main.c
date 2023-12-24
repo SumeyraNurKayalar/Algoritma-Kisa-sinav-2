@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*Kodun çalışması için ilk olarak açık arttırmaya katılacak kişi sayısı girilir ve teker teker bu kişilerin
-ödeyeceği miktarlar girilir.Bu ödeme miktarları ve kişilerin isimleri girildikten sonra program en sonunda örnek olarak
-girilmiş item cismini en çok ödeme yapan kişiye satar ve bu ödeme miktarını verir. Ayriyeten bunun
-altında açık arttırmaya katılmış tüm katılımcıların adı ve ödeme bedelleri yazar.*/
+/*Kodun Ã§alÄ±ÅŸmasÄ± iÃ§in ilk olarak aÃ§Ä±k arttÄ±rmaya katÄ±lacak kiÅŸi sayÄ±sÄ± girilir ve teker teker bu kiÅŸilerin 
+Ã¶deyeceÄŸi miktarlar girilir.Bu Ã¶deme miktarlarÄ± ve kiÅŸilerin isimleri girildikten sonra program en sonunda Ã¶rnek olarak 
+girilmiÅŸ item cismini en Ã§ok Ã¶deme yapan kiÅŸiye satar ve yapÄ±lan Ã¶deme miktarÄ±nÄ± verir. Ayriyeten bunun
+altÄ±nda aÃ§Ä±k arttÄ±rmaya katÄ±lmÄ±ÅŸ tÃ¼m katÄ±lÄ±mcÄ±larÄ±n adÄ± ve Ã¶deme bedelleri yazar.*/
 
 // Typedef for Bid struct
 typedef struct {
