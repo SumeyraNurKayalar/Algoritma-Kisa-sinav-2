@@ -3,16 +3,16 @@
 
 /*Kodun çalışması için ilk olarak açık arttırmaya katılacak kişi sayısı girilir ve teker teker bu kişilerin 
 ödeyeceği miktarlar girilir.Bu ödeme miktarları ve kişilerin isimleri girildikten sonra program en sonunda örnek olarak 
-girilmiş item cismini en çok ödeme yapan kişiye satar ve yapılan ödeme miktarını verir. Ayriyeten bunun
-altında açık arttırmaya katılmış tüm katılımcıların adı ve ödeme bedelleri yazar.*/
+girilmiş item cismini en çok ödeme yapan kişiye satar. Sonrasında yapılan ödeme miktarını ve bunu yapan kişinin 
+ismini verir.Ayriyeten bunun altında açık arttırmaya katılmış tüm katılımcıların adı ve ödeme bedelleri yazar.*/
 
-// Typedef for Bid struct
+// creates a Typedef for Bid struct
 typedef struct {
     char bidderName[100];
     double amount;
 } Bid;
 
-// Typedef for AuctionItem struct
+// creates a Typedef for AuctionItem struct
 typedef struct {
     char itemName[50];
     Bid *bids;
@@ -44,7 +44,7 @@ void placeBid(AuctionItem *item, const char *bidderName, double bidAmount) {
     printf("Bid placed successfully by %s for %.2f\n", bidderName, bidAmount);
 }
 
-// Function to get the number of bidders from the user
+// Functions to get the number of bidders from the user
 int getNumBidders() {
     int numBidders;
     printf("Enter the number of bidders: ");
@@ -52,7 +52,7 @@ int getNumBidders() {
     return numBidders;
 }
 
-// Function to get bidder information from the user
+// Functions to get bidder information from the user
 void getBidderInfo(AuctionItem *item) {
     int numBidders = getNumBidders();
     for (int i = 0; i < numBidders; i++) {
@@ -69,7 +69,7 @@ void getBidderInfo(AuctionItem *item) {
     }
 }
 
-// Function to display all bidders
+// Functions to display all bidders
 void displayAllBidders(const AuctionItem *item) {
     printf("All Bidders for item: %s\n", item->itemName);
     printf("Bidders:\n");
@@ -78,7 +78,7 @@ void displayAllBidders(const AuctionItem *item) {
     }
 }
 
-// Function to display the auction results, including the highest bidder
+// Functions to display the auction results, including the highest bidder
 void displayAuctionResults(const AuctionItem *item) {
     printf("Auction results for item: %s\n", item->itemName);
     printf("Current highest bid: %.2f\n", item->currentBid);
@@ -92,7 +92,7 @@ void displayAuctionResults(const AuctionItem *item) {
     displayAllBidders(item);
 }
 
-// Function to free memory allocated for bids
+// Functions to free memory allocated for bids
 void cleanupAuctionItem(AuctionItem *item) {
     free(item->bids);
 }
@@ -109,3 +109,4 @@ int main() {
 
     return 0;
 }
+ 
