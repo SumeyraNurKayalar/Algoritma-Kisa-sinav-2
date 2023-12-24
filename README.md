@@ -8,5 +8,5 @@ Oyun teorisi aynı zamanda alıcıların optimal teklif stratejilerini belirleme
 Oyun teorisi bu şekillde alıcı ve satıcıların birbirleriyle etkileşimde bulunduğu karmaşık durumları modellemede yardımcı olarak kullanılabilir.
 Programın çalışması için ilk olarak kullanıcıdan açık artırmaya katılacak birey sayısı istenir. 
 Kullanıcı açık artırmaya giren bir kişi girdikten sonra bu kişi için bir isim ve ödeme değeri girmesi istenir.
-Tüm bu değerler girildikten sonra program girilen en büyük ödeme değerini yazdırır. 
+Tüm bu değerler girildikten sonra program girilen en büyük ödeme değerini ve bu değeri veren kişinin ismini yazdırır. 
 Kazanan ödeme değerinin alt kısmında ise tüm katılımcılar, isimleri ve karşılarında ödeme tutarları olacak şekilde yazdırılır.
